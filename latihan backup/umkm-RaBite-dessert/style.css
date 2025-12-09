@@ -1,0 +1,32 @@
+/* Gaya umum halaman */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fefefe;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background-color: #bc5d70;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    background-color: #bc5d70;
+    border-bottom: 1px solid #eee;
+}
+
+.text {
+  color:#bc5d70;
+}
+
+footer {
+  background-color: #c7657b;
+  text-align: center;
+  padding: 10px;
+  margin-top: 40px;
+}

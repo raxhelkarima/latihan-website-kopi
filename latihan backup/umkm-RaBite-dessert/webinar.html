@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Pendaftaran Webinar - RaBite Dessert</title>
+    <link rel="icon" href="images/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <img src="images/logo.png" alt="Logo RaBite Dessert" width="40" height="40"/>
+                    RaBite Dessert
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavRabite">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNavRabite">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="tentang.html">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                        <li class="nav-item"><a class="nav-link" href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="container my-5">
+            <h1 class="text-center pt-5">Form Pendaftaran Webinar Promosi Produk</h1>
+
+            <div class="card shadow p-4 mx-auto" style="max-width: 500px;">
+                <h5 class="text-center mb-3">Silahkan isi formulir berikut ini untuk menghubungi tim Webinar</h5>
+
+                <form id="WebinarForm">
+
+                    <div class="mb-3">
+                        <label class="form-label">Nama Lengkap:</label>
+                        <input type="text" id="nama" class="form-control" placeholder="Masukkan nama lengkap">
+                        <div class="text-danger small" id="error-nama"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email:</label>
+                        <input type="email" id="email" class="form-control" placeholder="Contoh: People1@gmail.com">
+                        <div class="text-danger small" id="error-email"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">No Telepon:</label>
+                        <input type="text" id="nohp" class="form-control" placeholder="Contoh: 085712368923">
+                        <div class="text-danger small" id="error-nohp"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Pilih Topik Webinar:</label>
+                        <select id="topik" class="form-select">
+                            <option value="">-- Pilih Topik --</option>
+                            <option value="strategi pemasaran">Strategi Pemasaran Produk dessert di media sosial</option>
+                            <option value="pengemasan dan foto produk">Teknik Pengemasan dan foto makanan yang Menarik</option>
+                            <option value="branding-umkm">Branding dan citra UMKM</option>
+                        </select>
+                        <div class="text-danger small" id="error-topik"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Pesan:</label>
+                        <textarea id="pesan" rows="4" class="form-control"></textarea>
+                        <div class="text-danger small" id="error-pesan"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <input type="checkbox" id="setuju"> Saya setuju dengan syarat & ketentuan
+                        </label>
+                        <div class="text-danger small" id="error-setuju"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-danger w-100 fw-semibold">Daftar Sekarang</button>
+
+                </form>
+            </div>
+        </main>
+
+
+<footer>
+    <p>&copy; 2025 RaBite Dessert. Semua hak dilindungi.</p>
+</footer>
+
+<script>
+    //Ambil elemen form dari input
+    const Form = document.getElementById("WebinarForm");
+    const nama = document.getElementById("nama");
+    const email = document.getElementById("email");
+    const nohp = document.getElementById("nohp");
+    const topik = document.getElementById("topik");
+    const pesan = document.getElementById("pesan");
+    const setuju = document.getElementById("setuju");
+
+    //Fungsi Validasi Umum
+    function tampilError(id, pesan) {
+        document.getElementById("error-" + id).innerText = pesan;
+    }
+
+    function hapusError(id) {
+        document.getElementById("error-" + id).innerText = "";
+    }
+
+    //Validasi real-time
+    nama.addEventListener("blur", () => {
+        if (nama.value.trim().length < 3) {
+            tampilError("nama", "Nama minimal 3 karakter");
+        } else {
+            hapusError("nama");
+        }
+    });
+
+    email.addEventListener("blur", () => {
+        if (!email.value.includes("@") || email.value.endsWith("@yahoo.com")) {
+            tampilError("email", "Email tidak valid atau tidak boleh dari domain Yahoo");
+        } else {
+            hapusError("email");
+        }
+    });
+
+    nohp.addEventListener("input", () => {
+        if (!/^[0-9]+$/.test(nohp.value)) {
+            tampilError("nohp", "Nomor HP hanya boleh angka");
+        } else {
+            hapusError("nohp");
+        }
+    });
+
+    topik.addEventListener("change", () => {
+        if (topik.value === "") {
+            tampilError("topik", "Silahkan pilih topik webinar");
+        } else {
+            hapusError("topik");
+        }
+    });
+
+    pesan.addEventListener("input", () => {
+        if (pesan.value.trim().length < 10) {
+            tampilError("pesan", "Pesan minimal 10 karakter!");
+        } else {
+            hapusError("pesan");
+        }
+    });
+
+    setuju.addEventListener("change", () => {
+        if (!setuju.checked) {
+            tampilError("setuju", "Harus menyetujui syarat & ketentuan");
+        }else{
+            hapusError("setuju");
+        }
+    });
+
+    // Validasi saat submit
+    Form.addEventListener("submit", (e) =>{
+        e.preventDefault();
+
+        let valid = true;
+
+        if (nama.value.trim().length < 3) {
+            tampilError("nama", "Nama minimal 3 karakter");
+            valid=false;
+        }
+
+        if (!email.value.includes("@") || email.value.endsWith("@yahoo.com")) {
+            tampilError("email", "Email tidak valid atau tidak boleh dari domain Yahoo");
+            valid=false;
+        }
+
+        if (!/^[0-9]+$/.test(nohp.value)) {
+            tampilError("nohp", "Nomor HP hanya boleh angka");
+            valid=false;
+        }
+    
+        if (topik.value === "") {
+            tampilError("topik", "Silahkan pilih topik webinar");
+            valid=false;
+        }
+
+        if (pesan.value.trim().length < 10) {
+            tampilError("pesan", "Pesan minimal 10 karakter!");
+            valid=false;
+        }
+
+        if (!setuju.checked) {
+            tampilError("setuju", "Harus menyetujui syarat & ketentuan");
+            valid=false;
+        }
+
+        if (valid) {
+            alert("Pendaftaran berhasil dilakukan! Terima kasih telah bergabung di webinar kami");
+            form.reset();
+
+            //Membersihkan semua error setelah sukses
+            hapusError("nama")
+            hapusError("email")
+            hapusError("nohp")
+            hapusError("topik")
+            hapusError("pesan")
+            hapusError("setuju")
+            }
+        });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+
+        // realtime check nama harus ≥ 3 huruf
+        $("#nama").on("keyup", function(){
+            if($(this).val().length < 3){
+                $(this).css("border", "2px solid red");
+            } else {
+                $(this).css("border", "2px solid green");
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

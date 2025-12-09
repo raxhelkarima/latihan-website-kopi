@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak - RaBite Dessert</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h1>RaBite Dessert</h1>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo RaBite Dessert">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="produk.html">Produk</a></li>
+                    <li><a href="galeri.html">Galeri</a></li>
+                    <li><a href="kontak.html" class="active">Kontak</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Hubungi Kami</h2>
+        
+        <a href="webinar.html" class="link-webinar">Klik di sini untuk daftar webinar promosi produk RaBite Dessert</a>
+        
+        <p>Silakan isi formulir berikut untuk menghubungi tim RaBite Dessert:</p>
+
+        <form id="formKontak" action="#" method="post">
+            <label for="nama">Nama:</label><br>
+            <input type="text" id="nama" name="nama" required /><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required /><br><br>
+
+            <label for="nohp">Nomor HP:</label><br>
+            <input type="text" id="nohp" name="nohp" required placeholder="contoh: 081234567" /><br><br>
+
+            <label for="kategori">Kategori Pesan:</label><br>
+            <select id="Kategori" name="Kategori">
+                <option value="umum">Umum</option>
+                <option value="produk">Produk</option>
+                <option value="kerjasama">Kerja Sama</option>
+            </select><br><br>
+
+            <label for="jenis kelamin">jenis kelamin:</label><br>
+            <input type="radio" id="jenis kelamin" name="jenis kelamin" value="laki-laki"> laki-laki
+            <input type="radio" id="jenis kelamin" name="jenis kelamin" value="perempuan"> perempuan <br><br>
+
+            <label for="image">pilih file gambar/dokumen</label><br>
+            <input type="file" id="gambar" name="gambar" required /><br><br>
+
+            <label for="tanggal">Tanggal pengiriman pesan:</label><br>
+            <input type="date" id="tanggal" name="tanggal" required /><br><br>
+            
+            <label for="pesan">Pesan:</label><br>
+            <textarea id="pesan" name="pesan" rows="5" cols="30"></textarea><br><br>
+            
+            <input type="checkbox" id="langganan" name="langganan" value="ya"
+            <label for="langganan">Saya ingin menerima newsletter</label><br><br>
+
+            <button type="submit">Kirim</button>
+            <button type="button" id="clearBtn">Clear Data</button>
+            
+            <p id="errorMsg" style="color: red;"></p>
+            <p id="successMsg" style="color: green;"></p>
+        </form>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 RaBite Dessert</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("formKontak");
+            const nama = document.getElementById("nama");
+            const email = document.getElementById("email");
+            const nohp = document.getElementById("nohp");
+            const pesan = document.getElementById("pesan");
+            const errorMsg = document.getElementById("errorMsg");
+            const successMsg = document.getElementById("successMsg");
+            const clearBtn = document.getElementById("clearBtn");
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                errorMsg.textContent = "";
+                successMsg.textContent = "";
+                
+                if (nama.value === "" || email.value === "" || nohp.value === "" || pesan.value === "") {
+                    errorMsg.textContent = "Semua field wajib diisi!";
+                    return;
+                }
+                
+                if (!/^[0-9]+$/.test(nohp.value)) {
+                    errorMsg.textContent = "Nomor HP hanya boleh berisi angka.";
+                    return;
+                }
+                
+                successMsg.textContent = "Pesan Anda berhasil dikirim! Terima kasih telah menghubungi RaBite Dessert.";
+                form.reset();
+            });
+            
+            clearBtn.addEventListener("click", function () {
+                form.reset();
+                errorMsg.textContent = "";
+                successMsg.textContent = "";
+            });
+        });
+    </script>
+    
+</body>
+</html>

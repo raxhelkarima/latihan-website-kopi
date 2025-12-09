@@ -1,0 +1,156 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>kontak - Kopi Nusantara</title>
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+<body>
+    <header>
+        <h1>Kopi Nusantara</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="images/logoo.png" alt="Logo UMKM" width="40" height="40"/>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bbs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="tentang.html">Tentang Kami</a></li>
+                        <li class="nav-item"><a class="nav-link" href="produk.html">Produk</a></li>
+                        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="kontak.html">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Hubungi Kami</h2>
+        <p>Silahkan isi formulir berikut untuk menghubungi tim Kopi Nusantara:</p>
+
+        <form id="formKontak" action="#" method="post">
+            <label for="nama">Nama:</label><br>
+            <input type="text" id="nama" name="nama" />
+            <span class="error" id="errorNama"></span><br><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" />
+            <span class="error" id="errorEmail"></span><br><br>
+
+            <label for="kategori">kategori Pesan:</label><br>
+            <select id="kategori" name="kategori">
+                <option value="">-- Pilih Kategori --</option>
+                <option value="umum">Umum</option>
+                <option value="produk">Produk</option>
+                <option value="kerjasama">Kerjasama</option>
+            </select>
+            <span class="error" id="errorKategori"></span><br><br>
+
+            <label for="pesan">Pesan:</label><br>
+            <textarea id="pesan" name="pesan" rows="5" cols="30"></textarea>
+            <span class="error"  id="errorPesan"></span><br><br>
+
+            <input type="checkbox" id="langganan" name="langganan" value="ya">
+            <label for="langganan">Saya ingin menerima mewsletter</label><br><br>
+
+            <button type="submit">Kirim</button>
+
+            <p id="errorMsg" style="color:red;"></p>
+            
+        </form>
+    </main>
+
+    <script>
+       const form = document.getElementById("formKontak");
+
+       form.addEventListener("submit", function (event) {
+        let valid = true;
+
+        // Nama harus diisi
+        const nama = document.getElementById("nama");
+        const errorNama = document.getElementById("errorNama");
+        if (nama.value.trim() === "") {
+            errorNama.textContent = "Nama wajib diisi.";
+            valid = false;
+        } else {
+            errorNama.textContent = "";
+        }
+
+        // Email harus valid dan domain harus @gmail.com
+        const email = document.getElementById("email");
+        const errorEmail = document.getElementById("errorEmail");
+        const emailPattern = /^[^ ]+@gmail\.com$/i;
+        if (!emailPattern.test(email.value)) {
+            errorEmail.textContent = "Email harus @gmail.com dan format benar.";
+            valid = false;
+        } else {
+            errorEmail.textContent = "";
+        }
+
+        // Kategori harus dipilih
+        const kategori = document.getElementById("kategori");
+        const errorKategori = document.getElementById("errorKategori");
+        if (kategori.value === "") {
+            errorKategori.textContent = "Pilih salah satu kategori.";
+            valid = false;
+        } else {
+            errorKategori.textContent = "";
+        }
+
+        // Pesan minimal 10 karakter 
+        const pesan = document.getElementById("pesan");
+        const errorPesan = document.getElementById("errorPesan");
+        if (pesan.value.trim().length < 10) {
+            errorPesan.textContent = "Pesan minimal 10 karakter.";
+            valid = false;
+        } else {
+            errorPesan.textContent = "";
+        }
+
+        if (!valid) {
+            event.preventDefault(); // Gagalkan submit
+        } else {
+            
+        }
+       });
+
+       document.getElementById("nama").addEventListener("blur", function () {
+        const errorNama = document.getElementById("errorNama");
+        if (this.value.trim() === "") {
+            errorNama.textContent = "Nama wajib diisi.";
+        } else {
+            errorNama.textContent = "";
+        }
+       });
+
+       document.getElementById("pesan").addEventListener("input", function () {
+        const errorPesan = document.getElementById("errorPesan");
+        if (this.value.trim().length < 10) {
+            errorPesan.textContent = "Pesan minimal 10 karakter.";
+        } else {
+            errorPesan.textContent = "";
+        }
+       });
+
+       document.getElementById("langganan").addEventListener("change", function () {
+        if (this.checked) {
+            alert("Terimakasih telah berlangganan newsletter!");
+        }
+       });
+    </script>
+    <script type="module" src="js/form.js"></script>
+    <script type="module" src="js/newsletter.js"></script>
+
+    <footer>
+        <p>&copy; 2025 Kopi Nusantara</p>
+    </footer>
+</body>
+</html>

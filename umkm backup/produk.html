@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk UMKM - RaBite Dessert</title>
+    <link rel="stylesheet" href="style.css" />    
+</head>
+<body>
+    <header>
+        <h1>RaBite Dessert</h1>
+       <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo RaBite Dessert">
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="tentang.html">Tentang Kami</a></li>
+                    <li><a href="produk.html" class="active">Produk</a></li>
+                    <li><a href="galeri.html">Galeri</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <h2>Produk Unggulan Kami</h2>
+        <p>Berikut daftar produk RaBite Dessert yang kami sediakan:</p>
+
+        <table border="1" cellspacing="0" cellpadding="8">
+            <thead>
+                <tr>
+                    <th>Produk</th>
+                    <th>Ukuran/isi</th>
+                    <th>Harga</th>
+                    <th>Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Mochi Krim Coklat</td>
+                <td>box isi 3</td>
+                <td>Rp 21.000</td>
+                <td rowspan="3">Ichigo</td>
+            </tr>
+            <tr>
+                <td>Mochi Krim strawberry</td>
+                <td>box isi 3</td>
+                <td>Rp 18.000</td>
+            </tr>
+            <tr>
+                <td>Mochi Krim matcha</td>
+                <td>box isi 3</td>
+                <td>Rp 24.000</td>
+            </tr>
+            <tr>
+                <td>Mochi brown crumble</td>
+                <td>box isi 10</td>
+                <td>Rp 13.000</td>
+                <td rowspan="3">Bite</td>
+            </tr>
+            <tr>
+                <td>Mochi pink crumble</td>
+                <td>box isi 10</td>
+                <td>Rp 11.500</td>
+            </tr>
+            <tr>
+                <td>Mochi green crumble</td>
+                <td>box isi 10</td>
+                <td>Rp 16.000</td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center; font-style: italic; background-color:#da687f;">
+                    Semua harga sudah termasuk PPN
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        
+        <h3>profil Produk</h3>
+        <div class="card">
+            <img src="images/profil.jpg" alt="Produk UMKM" width="300">
+            <h3>RaBite Dessert Mochi Display</h3>
+            <p>Beberapa mochi best seller dari RaBite Dessert pada Display Kami.</p>
+        </div>
+
+        <div class="kategori-usia">
+            <h3>Cek Kategori Usia Pelanggan</h3>
+            <input type="number" id="usia" placeholder="Masukkan usia Anda">
+            <button onclick="cekKategori()">Cek Kategori</button>
+            <p id="hasilUsia"></p>
+            
+        <script>
+            function cekKategori() {
+                const usia = document.getElementById("usia").value;
+                let kategori;
+                
+                if (usia < 13) {
+                    kategori = "Anak-anak";
+                } else if (usia <= 17) {
+                    kategori = "Remaja";
+                } else if (usia <= 60) {
+                    kategori = "Dewasa";
+                } else {
+                    kategori = "Lansia";
+                }
+
+                document.getElementById("hasilUsia").textContent = "Kategori Anda: " + kategori;
+            }
+        </script>
+        </div>   
+        
+        <div class="testimoni-produk">
+            <h3>Testimoni Pelanggan RaBite Dessert</h3>
+            <div class="testimoni-container">
+                <div class="testi-card">
+                    <img src="images/testi1.jpg" alt="Foto Nadia">
+                    <h4>Nadia</h4>
+                    <p>Mochinya lembut banget dan isiannya melimpah!</p>
+                    <p class="rating">★★★★★</p>
+                </div>
+                <div class="testi-card">
+                    <img src="images/testi2.jpg" alt="Foto Lina">
+                    <h4>Lina</h4>
+                    <p>Rasa strawberry-nya seger banget!</p>
+                    <p class="rating">★★★★☆</p>
+                </div>
+                <div class="testi-card">
+                    <img src="images/testi3.jpg" alt="Foto Ayu">
+                    <h4>Ayu</h4>
+                    <p>Packaging-nya lucu, cocok buat hampers.</p>
+                    <p class="rating">★★★★★</p>
+                </div>
+                <div class="testi-card">
+                    <img src="images/testi4.jpg" alt="Foto Rafi">
+                    <h4>Rafi</h4>
+                    <p>Harga terjangkau tapi kualitas premium.</p>
+                    <p class="rating">★★★★☆</p>
+                </div>
+                <div class="testi-card">
+                    <img src="images/testi5.jpg" alt="Foto Miko">
+                    <h4>Miko</h4>
+                    <p>Pelayanan cepat dan produk fresh.</p>
+                    <p class="rating">★★★★★</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="hitung-total">
+            <h3>Hitung Total Belanja</h3>
+            <form onsubmit="return hitungTotal()">
+                <label>Pilih Produk:</label><br>
+                <select id="produk">
+                    <option value="21000">Mochi (Ichigo) Krim Coklat - Rp 21.000</option>
+                    <option value="18000">Mochi (Ichigo) Krim Strawberry - Rp 18.000</option>
+                    <option value="24000">Mochi (Ichigo) Krim Matcha - Rp 24.000</option>
+                    <option value="13000">Mochi (Bite) Brown Crumble - Rp 13.000</option>
+                    <option value="11500">Mochi (Bite) Pink Crumble - Rp 11.500</option>
+                    <option value="16000">Mochi (Bite) Green Crumble - Rp 16.000</option>
+                </select><br><br>
+                
+                <label>Jumlah Produk:</label><br>
+                <input type="number" id="jumlah" placeholder="Masukkan jumlah" required><br><br>
+
+                <button type="button" onclick="tambahKeranjang()">Tambah ke Keranjang</button>
+
+                <h4>Keranjang Belanja Anda</h4>
+                <ul id="keranjangList"></ul>
+
+                <button type="submit">Kirim</button>
+                <button type="button" class="btn-reset" onclick="resetKeranjang()">Reset Keranjang</button>
+            </form>
+        </div>
+
+        <script>
+        let keranjang = [];
+        
+        function tambahKeranjang() {
+            const produk = document.getElementById("produk");
+            const harga = Number(produk.value);
+            const namaProduk = produk.options[produk.selectedIndex].text;
+            const jumlah = Number(document.getElementById("jumlah").value);
+            
+            if (jumlah <= 0) {
+                alert("Masukkan jumlah produk dengan benar!");
+                return;
+            }
+
+            const existingItem = keranjang.find(item => item.nama === namaProduk);
+            if (existingItem) {
+                existingItem.jumlah += jumlah;
+            } else {
+                keranjang.push({ nama: namaProduk, harga, jumlah });
+            }
+            
+            tampilkanKeranjang();
+        }
+        
+        function hapusItem(index) {
+            keranjang.splice(index, 1); // hapus berdasarkan posisi array
+            tampilkanKeranjang(); // refresh tampilan keranjang
+        }
+
+        function tampilkanKeranjang() {
+            const list = document.getElementById("keranjangList");
+            list.innerHTML = ""; // hapus isi lama
+
+            keranjang.forEach((item, index) => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+                ${item.nama} (x${item.jumlah})
+                <button onclick="hapusItem(${index})" class="hapus-btn">Hapus</button>
+            `;
+            list.appendChild(li);
+            });
+        }
+
+        function hitungTotal() {
+            if (keranjang.length === 0) {
+            alert("Keranjang masih kosong!");
+            return false;
+            }
+
+            const total = keranjang.reduce((sum, item) => sum + item.harga * item.jumlah, 0);
+            const pesan = "Total Belanja Anda: Rp " + total.toLocaleString("id-ID") + "\n\nApakah Anda ingin melanjutkan pemesanan?";
+            const konfirmasi = confirm(pesan);
+            
+            if (konfirmasi) {
+                alert("Pesanan Anda berhasil dikirim!\nTerima kasih telah berbelanja di RaBite Dessert 🍡");
+                keranjang = [];
+                tampilkanKeranjang();
+            }
+            return false;
+        }
+
+            function resetKeranjang() {
+                if (confirm("Yakin ingin mengosongkan keranjang")) {
+                    keranjang = []; // reset setelah dikirim
+                    tampilkanKeranjang(); // refresh tampilan
+                }
+            }
+        </script>
+        
+        <h3>Dengarkan Cerita kami</h3>
+        <audio controls>
+            <source src="audio/music.mp3" type="audio/mpeg">
+            Audio tidak tersedia di browser Anda.
+        </audio>
+        
+        <h3>Lihatlah Video Kami</h3>
+        <video width="320" height="240" controls>
+            <source src="video/vidmoc.mp4" type="video/mp4">
+            Browser Anda tidak mendukung video.
+        </video>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 RaBite Dessert</p>
+    </footer>
+</body>
+</html>
